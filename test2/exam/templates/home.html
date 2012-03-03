@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>Zombie Tweeter</title>
+</head>
+<body>
+    <div>
+        <h2>Welcome to Zombie Tweeter</h2>
+	<a href="{% url add_zombie %}" >Sing in</a> 
+    </div>
+    <h1>Zombies:</h1>
+    <hr/>
+    {% for zombie in Zombie %}
+    <div>
+        <h2> Name: {{ zombie.name }} - Cementery: {{ zombie.cementery }}</h2>
+	<h3>Tweets</h3>
+______________________________________________________________________________
+        <div class="tweettime">
+            {% for tweet in zombie.tweettime.all %}
+            <div><h4>Tweet: {{ tweet.status }}</h4> <h5>{{ tweet.created_at }}</h5></div>
+______________________________________________________________________________
+            {% endfor %}
+        </div>
+    </div>
+    <hr/>
+    {% endfor %}
+        <div><a href="{% url add_tweet %}" >Tweet someone</a></div>
+ </body>
+</html>
